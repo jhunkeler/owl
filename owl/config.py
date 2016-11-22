@@ -44,11 +44,15 @@ present in either owlrc or owlrc.local.
 # pylint: disable=E0602
 
 # Parse the config file and specify defaults inline.
-import ConfigParser
+try:
+    import configparser as ConfigParser
+except ImportError:
+    import ConfigParser
+
 import os
 import sys
 
-from utils import db_connection_str
+from .utils import db_connection_str
 
 
 
@@ -150,7 +154,7 @@ if(not hasattr(logging, LOGGING_LOG_LEVEL)):
 
 # Finally, export all config in text form for logging.
 CONFIG_TEXT = ''
-key_vals = module.__dict__.items()
+key_vals = list(module.__dict__.items())
 key_vals.sort()
 for key, val in key_vals:
     if(key.isupper() and key != 'CONFIG_TEXT'):

@@ -50,7 +50,7 @@ if __name__ == "__main__":
         shutil.copytree(src, dst)
 
 
-    from src import __version__
+    from owl import __version__
 
 
 
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
           scripts=SCRIPTS,
           packages=['owl', 'owl.plugins', ],
-          package_dir={'owl': 'src'},
+          package_dir={'owl': 'owl'},
           package_data={'owl': ['templates/*/*/*', ]},
     )
 
